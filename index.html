@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -19,7 +20,7 @@
     --beige: #E0DAD6;
     --text-dark: #2D2926;
     --text-mid: #6A5F58;
-    --text-light: #6A5F58;
+    --text-light: #A89E97;
     --text-faint: #C8C0B8;
     --white: #FFFFFF;
     --green: #3A7A5A;
@@ -179,29 +180,34 @@
   /* ── SLIDE STAGE ── */
   #stage {
     flex: 1;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 16px 24px;
-  overflow: hidden;
-  position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+    overflow: hidden;
+    position: relative;
+    min-height: 0;
   }
 
   .slide-wrapper {
-  width: 100%;
-  max-width: 1100px;
-  position: relative;
-  max-height: 100%;
+    /* Cabe na largura disponível OU na altura disponível, o que for menor */
+    --stage-h: calc(100vh - 52px); /* total menos topbar+progress */
+    --max-w-from-h: calc(var(--stage-h) * (16/9));
+    width: min(100%, var(--max-w-from-h));
+    position: relative;
+    flex-shrink: 0;
   }
 
   .slide-aspect {
-  width: 100%;
-  height: min(calc((100vw - 220px) * 0.5625), calc(100vh - 80px));
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
-}
+    /* Altura = largura * 9/16, nunca ultrapassa a altura disponível */
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+    max-height: calc(100vh - 52px);
+  }
 
   .slide {
     position: absolute;
