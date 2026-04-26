@@ -1,0 +1,1262 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When research changes the path to diagnosis — Thalles Ximenes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --rose:#C4768A;
+  --rose-dark:#9E6B7A;
+  --rose-light:#FBEAF0;
+  --rose-mid:#EDD0D9;
+  --cream:#FAF8F6;
+  --cream-mid:#F5F0ED;
+  --cream-dark:#EDE8E4;
+  --beige:#E0DAD6;
+  --text-dark:#2D2926;
+  --text-mid:#6A5F58;
+  --text-light:#8A7F78;
+  --text-faint:#C8C0B8;
+  --white:#FFFFFF;
+  --green:#3A7A5A;
+  --green-light:#EDF5F1;
+  --border:#E8E3DF;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --nav-h:60px;
+}
+
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  background:var(--cream);
+  color:var(--text-dark);
+  overflow-x:hidden;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  height:var(--nav-h);
+  background:rgba(250,248,246,0.92);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:0.5px solid var(--border);
+  z-index:100;
+  display:flex;align-items:center;
+  padding:0 40px;
+  gap:0;
+}
+.nav-logo{
+  font-family:var(--serif);
+  font-size:13px;font-weight:700;
+  color:var(--text-dark);
+  white-space:nowrap;
+  margin-right:auto;
+  line-height:1.2;
+}
+.nav-logo span{color:var(--rose);}
+.nav-links{
+  display:flex;align-items:center;gap:4px;
+}
+.nav-link{
+  display:flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:20px;
+  font-size:11px;font-weight:500;
+  color:var(--text-light);
+  text-decoration:none;
+  transition:all 0.2s;
+  white-space:nowrap;
+  letter-spacing:0.02em;
+}
+.nav-link:hover{background:var(--cream-dark);color:var(--text-dark);}
+.nav-link.active{background:var(--rose-light);color:var(--rose-dark);}
+.nav-num{
+  font-size:9px;font-weight:600;
+  color:var(--rose);letter-spacing:0.08em;
+}
+
+/* ── SECTIONS ── */
+section{
+  min-height:100vh;
+  padding:100px 0 80px;
+  position:relative;
+}
+.container{
+  max-width:1120px;margin:0 auto;
+  padding:0 40px;
+}
+
+/* ── HERO ── */
+#hero{
+  background:#1E1A17;
+  display:flex;align-items:center;
+  min-height:100vh;
+  padding:0;
+  overflow:hidden;
+  position:relative;
+}
+.hero-inner{
+  max-width:1120px;margin:0 auto;
+  padding:0 40px;
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:60px;
+  align-items:center;
+  padding-top:80px;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  border:0.5px solid rgba(196,118,138,0.5);
+  border-radius:20px;padding:5px 14px;
+  font-size:10px;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--rose);
+  font-weight:500;margin-bottom:28px;
+}
+.hero-tag-dot{width:5px;height:5px;border-radius:50%;background:var(--rose);}
+.hero-title{
+  font-family:var(--serif);
+  font-size:clamp(36px,5vw,64px);
+  font-weight:700;color:#fff;
+  line-height:1.1;margin-bottom:24px;
+}
+.hero-title em{color:var(--rose);font-style:italic;}
+.hero-sub{
+  font-size:14px;color:rgba(255,255,255,0.45);
+  line-height:1.8;font-weight:300;
+  max-width:460px;margin-bottom:40px;
+}
+.hero-meta{
+  display:flex;gap:32px;
+}
+.hero-meta-item{
+  display:flex;flex-direction:column;gap:3px;
+}
+.hero-meta-label{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);}
+.hero-meta-val{font-size:12px;color:rgba(255,255,255,0.6);font-weight:400;}
+.hero-img{
+  width:100%;aspect-ratio:3/4;
+  border-radius:16px;overflow:hidden;
+  position:relative;
+}
+.hero-img img{width:100%;height:100%;object-fit:cover;}
+.hero-img-placeholder{
+  width:100%;height:100%;
+  background:rgba(255,255,255,0.04);
+  border:1px dashed rgba(255,255,255,0.1);
+  border-radius:16px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:8px;
+}
+.hero-circle{
+  position:absolute;
+  border-radius:50%;
+  background:var(--rose);
+  opacity:0.06;
+  pointer-events:none;
+}
+.hero-scroll{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  animation:bounce 2s infinite;
+}
+.hero-scroll span{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.2);}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+
+/* ── SECTION HEADER ── */
+.sec-eyebrow{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;
+}
+.sec-num{
+  font-size:11px;font-weight:600;letter-spacing:0.1em;
+  color:var(--rose);
+}
+.sec-rule{width:32px;height:1px;background:var(--rose);opacity:0.5;}
+.sec-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-light);font-weight:500;}
+.sec-title{
+  font-family:var(--serif);
+  font-size:clamp(28px,3.5vw,48px);
+  font-weight:700;color:var(--text-dark);
+  line-height:1.15;margin-bottom:20px;
+}
+.sec-title em{color:var(--rose);font-style:italic;}
+.sec-body{font-size:14px;color:var(--text-mid);line-height:1.85;font-weight:300;}
+.sec-body strong{color:var(--text-dark);font-weight:500;}
+
+/* ── A DOR ── */
+#a-dor{background:var(--white);}
+.dor-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:start;
+  margin-top:60px;
+}
+.dor-img{
+  width:100%;aspect-ratio:4/5;
+  border-radius:16px;overflow:hidden;
+  position:sticky;top:80px;
+}
+.dor-img img{width:100%;height:100%;object-fit:cover;}
+.ph-block{
+  width:100%;height:100%;
+  background:var(--cream-dark);
+  border:1px dashed var(--beige);
+  border-radius:16px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:8px;padding:24px;
+}
+.ph-lbl{font-size:11px;color:var(--text-light);text-align:center;line-height:1.5;}
+.ph-tag{font-size:9px;color:var(--rose);background:var(--rose-light);padding:2px 10px;border-radius:10px;}
+.dor-content{padding-top:8px;}
+.quote-block{margin:32px 0;}
+.q-mark{
+  font-family:var(--serif);font-size:64px;
+  color:var(--rose);opacity:0.2;
+  line-height:0.7;margin-bottom:12px;
+}
+.q-text{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(16px,2vw,22px);
+  color:var(--text-dark);line-height:1.5;
+}
+.q-attr{font-size:11px;color:var(--text-faint);margin-top:10px;}
+.pain-list{display:flex;flex-direction:column;gap:10px;margin-top:32px;}
+.pain-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 18px;
+  background:var(--cream);
+  border-radius:10px;border:0.5px solid var(--border);
+}
+.pain-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--rose);flex-shrink:0;margin-top:4px;
+}
+.pain-text{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.pain-text strong{color:var(--text-dark);font-weight:500;}
+.tension-box{
+  margin-top:48px;padding:32px 36px;
+  background:var(--cream-mid);
+  border-radius:16px;
+  border-left:3px solid var(--rose);
+  position:relative;overflow:hidden;
+}
+.t-deco{
+  position:absolute;width:160px;height:160px;
+  border-radius:50%;background:var(--rose);opacity:0.05;
+  bottom:-40px;right:-40px;
+}
+.t-quote{
+  font-family:var(--serif);font-size:clamp(16px,2vw,22px);
+  font-style:italic;color:var(--text-dark);
+  line-height:1.5;margin-bottom:12px;
+}
+.t-attr{font-size:11px;color:var(--text-light);}
+.t-turn{
+  display:flex;align-items:baseline;gap:12px;
+  margin-top:24px;padding-top:20px;
+  border-top:0.5px solid var(--beige);
+}
+.t-turn-main{
+  font-family:var(--serif);
+  font-size:clamp(18px,2.2vw,26px);
+  font-weight:700;color:var(--text-dark);
+}
+.t-turn-sub{font-size:12px;color:var(--text-light);}
+
+/* JOURNEY FLOW */
+.journey{
+  display:flex;align-items:flex-start;
+  gap:0;margin-top:48px;
+  padding:28px 24px;
+  background:var(--white);border-radius:16px;
+  border:0.5px solid var(--border);
+  overflow-x:auto;
+}
+.j-step{
+  display:flex;flex-direction:column;
+  align-items:center;gap:10px;
+  flex:1;min-width:90px;text-align:center;
+}
+.j-icon{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.j-label{font-size:10px;color:var(--text-mid);line-height:1.4;}
+.j-tag{
+  font-size:9px;padding:2px 8px;border-radius:10px;font-weight:500;
+}
+.jtag-pain{background:var(--rose-light);color:var(--rose-dark);}
+.jtag-neutral{background:var(--cream-dark);color:var(--text-light);}
+.j-arrow{
+  display:flex;align-items:center;
+  padding:0 4px;margin-top:17px;flex-shrink:0;
+}
+
+/* ── CONTEXTO ── */
+#contexto{background:var(--cream-mid);}
+.ctx-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  margin-top:60px;
+  align-items:start;
+}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.stat-card{
+  background:var(--white);border-radius:12px;
+  border:0.5px solid var(--border);padding:20px 22px;
+}
+.stat-n{
+  font-family:var(--serif);font-size:clamp(28px,3.5vw,40px);
+  font-weight:700;color:var(--rose);line-height:1;
+}
+.stat-lbl{font-size:11px;color:var(--text-light);margin-top:6px;line-height:1.4;}
+.hyp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:48px;}
+.hyp-card{
+  background:var(--white);border-radius:12px;
+  border:0.5px solid var(--border);
+  padding:20px 22px;display:flex;flex-direction:column;gap:10px;
+}
+.hyp-num{font-size:10px;color:var(--rose);font-weight:600;letter-spacing:0.1em;}
+.hyp-text{font-size:12px;color:var(--text-mid);line-height:1.65;flex:1;}
+.hyp-text strong{color:var(--text-dark);font-weight:500;}
+.badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;padding:3px 10px;border-radius:10px;
+  font-weight:500;width:fit-content;
+}
+.badge-r{background:var(--rose-light);color:var(--rose-dark);}
+.badge-g{background:var(--green-light);color:var(--green);}
+
+/* ── PESQUISA ── */
+#pesquisa{background:var(--white);}
+.pesq-intro{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:center;margin-top:60px;
+}
+.pesq-img{
+  width:100%;aspect-ratio:4/3;
+  border-radius:16px;overflow:hidden;
+}
+.pesq-img img{width:100%;height:100%;object-fit:cover;}
+.big-num-row{display:flex;gap:40px;margin-top:32px;align-items:flex-end;}
+.big-n{
+  font-family:var(--serif);
+  font-size:clamp(40px,5vw,64px);
+  font-weight:700;color:var(--rose);line-height:1;
+}
+.big-lbl{font-size:11px;color:var(--text-light);margin-top:4px;}
+.note-bar{
+  margin-top:24px;padding:14px 18px;
+  background:#FFF8F4;
+  border-left:2px solid var(--rose);
+  border-radius:0 8px 8px 0;
+  font-size:11px;color:var(--text-mid);line-height:1.65;
+}
+.note-bar strong{color:var(--text-dark);font-weight:500;}
+
+/* DADOS */
+.data-section{margin-top:80px;}
+.data-title{
+  font-family:var(--serif);
+  font-size:clamp(22px,2.8vw,36px);
+  font-weight:700;color:var(--text-dark);
+  margin-bottom:8px;
+}
+.data-sub{font-size:12px;color:var(--text-light);margin-bottom:32px;}
+.data-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.data-card{
+  background:var(--cream);border-radius:12px;
+  border:0.5px solid var(--border);
+  padding:18px 18px 16px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.data-card.hl{background:#FFF0F3;border-color:#E8C8D0;}
+.dc-tag{
+  font-size:9px;padding:2px 8px;border-radius:8px;
+  font-weight:500;width:fit-content;
+}
+.tag-p{background:var(--rose-light);color:var(--rose-dark);}
+.tag-a{background:var(--cream-dark);color:var(--text-light);}
+.dc-pct{
+  font-family:var(--serif);
+  font-size:clamp(28px,3.5vw,44px);
+  font-weight:700;color:var(--rose);line-height:1;
+}
+.dc-bar{width:100%;height:3px;background:var(--border);border-radius:2px;}
+.dc-fill{height:3px;border-radius:2px;background:var(--rose);}
+.dc-lbl{font-size:13px;color:var(--text-mid);}
+.dc-sub{font-size:11px;color:var(--text-light);font-weight:300;}
+.insight-bar{
+  margin-top:20px;padding:16px 20px;
+  background:var(--cream-mid);border-radius:10px;
+  border-left:3px solid var(--rose);
+  font-size:13px;color:var(--text-mid);line-height:1.75;
+}
+.insight-bar strong{color:var(--text-dark);font-weight:500;}
+
+/* MAPA */
+.map-section{margin-top:80px;}
+.three-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:24px;}
+.col-head{
+  font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+  font-weight:600;margin-bottom:10px;
+  padding-bottom:8px;border-bottom:1.5px solid;
+}
+.col-item{
+  font-size:13px;line-height:1.6;
+  padding:9px 14px;border-radius:6px;margin-bottom:6px;
+}
+
+/* PERSONAS */
+.persona-section{margin-top:80px;}
+.persona-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
+.persona-card{
+  background:var(--cream);border-radius:16px;
+  border:0.5px solid var(--border);overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.p-head{padding:20px 20px 0;display:flex;gap:14px;align-items:center;}
+.p-avatar{
+  width:72px;height:72px;border-radius:50%;flex-shrink:0;
+  overflow:hidden;background:var(--cream-dark);
+  border:1px dashed var(--beige);
+  display:flex;align-items:center;justify-content:center;
+}
+.p-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.p-name{font-size:13px;font-weight:500;color:var(--text-dark);}
+.p-role{font-size:10px;color:var(--text-light);}
+.ph-note{font-size:8px;color:var(--rose);margin-top:1px;}
+.p-body{padding:16px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.p-item{
+  display:flex;gap:7px;align-items:flex-start;
+  font-size:13px;color:var(--text-mid);line-height:1.55;
+}
+.p-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.p-quote{
+  font-size:12px;color:var(--text-light);
+  font-style:italic;line-height:1.6;
+  padding:10px 14px;background:var(--white);
+  border-radius:6px;margin-top:auto;
+}
+
+/* ── SOLUCAO ── */
+#solucao{background:var(--cream-mid);}
+.sol-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:start;margin-top:60px;
+}
+.timeline{display:flex;flex-direction:column;}
+.tl-item{display:flex;gap:16px;align-items:flex-start;}
+.tl-spine{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--rose);margin-top:2px;}
+.tl-dot.g{background:var(--green);}
+.tl-line{width:1px;height:28px;background:var(--border);}
+.tl-label{font-size:12px;font-weight:500;color:var(--text-dark);margin-bottom:3px;}
+.tl-desc{font-size:11px;color:var(--text-light);line-height:1.5;font-weight:300;padding-bottom:16px;}
+.opp-list{display:flex;flex-direction:column;gap:10px;margin-top:32px;}
+.opp-item{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:14px 18px;
+  background:var(--white);border-radius:10px;
+  border:0.5px solid var(--border);
+}
+.opp-n{
+  font-family:var(--serif);font-size:22px;
+  font-weight:700;color:var(--rose);
+  line-height:1.1;flex-shrink:0;width:20px;
+}
+.opp-t{font-size:12px;color:var(--text-mid);line-height:1.5;}
+.opp-t strong{color:var(--text-dark);font-weight:500;}
+
+/* BEFORE AFTER */
+.ba-section{margin-top:80px;}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;}
+.ba-col{border-radius:14px;padding:24px 26px;display:flex;flex-direction:column;gap:9px;}
+.ba-before{background:var(--white);border:0.5px solid var(--border);}
+.ba-after{background:var(--green-light);border:0.5px solid #B8DCC8;}
+.ba-head{
+  font-size:10px;font-weight:600;letter-spacing:0.08em;
+  text-transform:uppercase;margin-bottom:6px;
+  padding-bottom:8px;border-bottom:1px solid;
+}
+.ba-head-b{color:var(--text-light);border-color:var(--beige);}
+.ba-head-a{color:#2A6A42;border-color:#9ACFB0;}
+.ba-item{
+  display:flex;gap:8px;align-items:flex-start;
+  font-size:13px;line-height:1.6;
+}
+
+/* sol img */
+.sol-img{
+  width:100%;aspect-ratio:4/3;
+  border-radius:16px;overflow:hidden;
+  margin-bottom:24px;
+}
+.sol-img img{width:100%;height:100%;object-fit:cover;}
+
+/* ── IMPACTO ── */
+#impacto{background:var(--white);}
+.big-impact{
+  margin-top:60px;
+  display:flex;gap:0;
+  align-items:center;
+  padding:60px 0;
+  border-top:0.5px solid var(--border);
+  border-bottom:0.5px solid var(--border);
+}
+.impact-n-block{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;text-align:center;gap:8px;
+}
+.impact-n{
+  font-family:var(--serif);
+  font-size:clamp(48px,6vw,80px);
+  font-weight:700;line-height:1;
+}
+.impact-lbl{font-size:12px;color:var(--text-light);line-height:1.4;max-width:140px;}
+.impact-sub{font-size:10px;color:var(--text-faint);}
+.impact-arrow{
+  display:flex;flex-direction:column;align-items:center;
+  gap:4px;padding:0 20px;
+}
+.impact-pct{
+  font-family:var(--serif);font-size:clamp(18px,2.5vw,28px);
+  font-weight:700;color:var(--green);
+}
+.impact-divider{width:0.5px;height:100px;background:var(--border);}
+.extras-row{
+  display:flex;gap:14px;margin-top:32px;
+}
+.extra-card{
+  flex:1;background:var(--cream);border-radius:12px;
+  border:0.5px solid var(--border);padding:16px 20px;
+  display:flex;gap:14px;align-items:center;
+}
+.ex-n{
+  font-family:var(--serif);font-size:clamp(24px,3vw,34px);
+  font-weight:700;color:var(--rose);flex-shrink:0;
+}
+.ex-t{font-size:11px;color:var(--text-mid);line-height:1.4;}
+.ex-t strong{color:var(--text-dark);font-weight:500;}
+
+/* DEPOIMENTOS */
+.dep-section{margin-top:80px;}
+.dep-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px;}
+.dep-card{
+  background:var(--cream);border-radius:14px;
+  border:0.5px solid var(--border);
+  padding:22px 24px;display:flex;flex-direction:column;gap:12px;
+}
+.dep-head{display:flex;gap:14px;align-items:center;}
+.dep-av{
+  width:64px;height:64px;border-radius:50%;flex-shrink:0;
+  overflow:hidden;background:var(--cream-dark);
+  border:1px dashed var(--beige);
+  display:flex;align-items:center;justify-content:center;
+}
+.dep-av img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.dep-name{font-size:14px;font-weight:500;color:var(--text-dark);}
+.dep-role{font-size:11px;color:var(--text-light);}
+.dep-qm{
+  font-family:var(--serif);font-size:32px;
+  color:var(--rose);opacity:0.3;line-height:0.8;
+}
+.dep-text{font-size:13px;color:var(--text-mid);font-style:italic;line-height:1.75;}
+
+/* ── ENCERRAMENTO ── */
+#encerramento{
+  background:#1E1A17;
+  min-height:60vh;display:flex;
+  align-items:center;
+}
+.enc-inner{
+  max-width:1120px;margin:0 auto;padding:0 40px;
+  width:100%;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:center;
+}
+.enc-title{
+  font-family:var(--serif);
+  font-size:clamp(28px,3.5vw,48px);
+  font-weight:700;color:#fff;
+  line-height:1.2;margin-bottom:20px;
+}
+.enc-title em{color:var(--rose);font-style:italic;}
+.enc-body{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.85;font-weight:300;}
+.enc-body strong{color:rgba(255,255,255,0.75);font-weight:500;}
+.enc-learns{display:flex;flex-direction:column;gap:10px;}
+.enc-learn{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:14px 18px;
+  background:rgba(255,255,255,0.04);
+  border-radius:10px;border:0.5px solid rgba(255,255,255,0.07);
+}
+.enc-ln{
+  font-family:var(--serif);font-size:18px;
+  font-weight:700;color:var(--rose);flex-shrink:0;line-height:1.2;
+}
+.enc-lt{font-size:11px;color:rgba(255,255,255,0.45);line-height:1.55;}
+.enc-lt strong{color:rgba(255,255,255,0.75);font-weight:500;}
+.enc-author{
+  margin-top:32px;padding-top:24px;
+  border-top:0.5px solid rgba(255,255,255,0.08);
+}
+.enc-aname{font-size:14px;font-weight:500;color:#fff;}
+.enc-arole{font-size:11px;color:rgba(255,255,255,0.3);}
+
+/* ── FOOTER ── */
+footer{
+  background:#111009;padding:24px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.foot-left{font-size:11px;color:rgba(255,255,255,0.2);}
+.foot-right{font-size:11px;color:rgba(255,255,255,0.15);}
+
+/* ── SCROLL REVEAL ── */
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
+.reveal-delay-4{transition-delay:0.4s;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 16px;}
+  .nav-links{display:none;}
+  .hero-inner{grid-template-columns:1fr;padding-top:100px;padding-bottom:60px;gap:32px;}
+  .hero-img{aspect-ratio:3/2;max-height:300px;}
+  .hero-title{font-size:clamp(28px,7vw,44px);}
+  .hero-meta{flex-direction:column;gap:12px;}
+  .hero-scroll{display:none;}
+  section{padding:64px 0 48px;}
+  .container{padding:0 20px;}
+  .dor-grid{grid-template-columns:1fr;gap:40px;}
+  .dor-img{position:static !important;aspect-ratio:3/2;max-height:280px;}
+  .ctx-grid{grid-template-columns:1fr;gap:40px;}
+  .pesq-intro{grid-template-columns:1fr;gap:40px;}
+  .data-cards{grid-template-columns:1fr 1fr;}
+  .three-cols{grid-template-columns:1fr;}
+  .persona-cards{grid-template-columns:1fr;}
+  .sol-grid{grid-template-columns:1fr;gap:40px;}
+  .ba-grid{grid-template-columns:1fr;}
+  #o-sistema .container > div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;gap:40px !important;}
+  .big-impact{flex-direction:column;gap:24px;padding:40px 0;}
+  .impact-divider{display:none;}
+  .extras-row{flex-direction:column;}
+  .dep-grid{grid-template-columns:1fr;}
+  .hyp-grid{grid-template-columns:1fr;}
+  .stat-grid{grid-template-columns:1fr 1fr;}
+  .enc-inner{grid-template-columns:1fr;gap:40px;padding:60px 20px;}
+  footer{flex-direction:column;gap:8px;text-align:center;padding:20px;}
+}
+@media(max-width:480px){
+  .data-cards{grid-template-columns:1fr;}
+  .stat-grid{grid-template-columns:1fr;}
+  .hero-title{font-size:28px;}
+  .sec-title{font-size:26px;}
+  .ba-head{font-size:9px;}
+}
+
+/* Language button */
+.lang-btn{
+  margin-left:12px;padding:5px 13px;
+  border:0.5px solid var(--border);border-radius:20px;
+  font-size:11px;font-weight:500;color:var(--text-light);
+  text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;
+}
+.lang-btn:hover{background:var(--rose-light);border-color:var(--rose);color:var(--rose-dark);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-logo">Thalles Ximenes<br><span>UX Research</span></div>
+  <div class="nav-links">
+    <a class="nav-link" href="#a-dor"><span class="nav-num">01/</span>The Pain</a>
+    <a class="nav-link" href="#contexto"><span class="nav-num">02/</span>The Context</a>
+    <a class="nav-link" href="#pesquisa"><span class="nav-num">03/</span>The Research</a>
+    <a class="nav-link" href="#solucao"><span class="nav-num">04/</span>The Solution</a>
+    <a class="nav-link" href="#o-sistema"><span class="nav-num">04/</span>The System</a>
+    <a class="nav-link" href="#impacto"><span class="nav-num">05/</span>The Impact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-circle" style="width:500px;height:500px;top:-150px;right:-100px;"></div>
+  <div class="hero-circle" style="width:200px;height:200px;bottom:60px;left:-60px;opacity:0.04;"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag"><span class="hero-tag-dot"></span>UX Research · Public Health</div>
+      <h1 class="hero-title">Quando a pesquisa<br>muda o caminho<br>para <em>o diagnóstico</em></h1>
+      <p class="hero-sub">Discovery and research with patients and caregivers at a public oncology hospital in Northeast Brazil — and how data reversed an institutional belief and opened the way to transforming access to care.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Contexto</span>
+          <span class="hero-meta-val">Public Oncology Hospital · Free Healthcare</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Northeast, Brazil</span>
+          <span class="hero-meta-val">2020–2021</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Outcome</span>
+          <span class="hero-meta-val">+69% mammograms performed</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="slide1.png" alt="Mulher no ponto de ônibus ao amanhecer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="hero-img-placeholder" style="display:none;">
+        <p class="ph-lbl">slide1.png</p>
+        <span class="ph-tag">ilustração: mulher no ponto de ônibus</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>scroll</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</section>
+
+<!-- 01 · A DOR -->
+<section id="a-dor">
+  <div class="container">
+    <div class="sec-eyebrow reveal">
+      <span class="sec-num">01/</span>
+      <span class="sec-rule"></span>
+      <span class="sec-label">The Pain</span>
+    </div>
+    <h2 class="sec-title reveal">The <em>invisible</em> journey</h2>
+
+    <div class="dor-grid">
+      <div class="dor-img reveal">
+        <img src="slide1.png" alt="Jornada da paciente" onerror="this.parentElement.innerHTML='<div class=\'ph-block\'><p class=\'ph-lbl\'>slide1.png</p><span class=\'ph-tag\'>ilustração: mulher no ponto de ônibus</span></div>'">
+      </div>
+
+      <div class="dor-content">
+        <p class="sec-body reveal">It is <strong>4am</strong>. Maria wakes before sunrise. Takes <strong>two buses</strong>. Arrives at the hospital at 6am. Waits. And waits some more. By noon, she discovers there are no available slots. She goes home without an appointment.</p>
+
+        <div class="quote-block reveal reveal-delay-1">
+          <div class="q-mark">"</div>
+          <p class="q-text">This was not the exception. It was the rule.</p>
+          <p class="q-attr">Realidade de pacientes do hospital oncológico público · Northeast, Brazil</p>
+        </div>
+
+        <div class="pain-list reveal reveal-delay-2">
+          <div class="pain-item"><span class="pain-dot"></span><p class="pain-text"><strong>2h+ commute</strong> — many came from the countryside by bus in the early hours</p></div>
+          <div class="pain-item"><span class="pain-dot"></span><p class="pain-text"><strong>Queues from dawn</strong> — with no guarantee of being seen</p></div>
+          <div class="pain-item"><span class="pain-dot"></span><p class="pain-text"><strong>Phones always busy</strong> — overloaded lines made booking impossible</p></div>
+          <div class="pain-item"><span class="pain-dot"></span><p class="pain-text"><strong>No change notifications</strong> — patients only discovered schedule changes upon arrival</p></div>
+          <div class="pain-item"><span class="pain-dot"></span><p class="pain-text"><strong>Caregivers far from home</strong> — many slept in support houses to keep their spot</p></div>
+        </div>
+
+        <div class="journey reveal reveal-delay-3">
+          <div class="j-step">
+            <div class="j-icon" style="background:var(--cream-dark);">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="6" r="2.5" stroke="#8A7F78" stroke-width="1.1"/><path d="M3 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#8A7F78" stroke-width="1.1" stroke-linecap="round"/></svg>
+            </div>
+            <span class="j-label">Wakes 4am</span>
+            <span class="j-tag jtag-neutral">morning</span>
+          </div>
+          <div class="j-arrow"><svg width="20" height="10" viewBox="0 0 20 10"><path d="M0 5h16M12 1l4 4-4 4" stroke="#C4768A" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="j-step">
+            <div class="j-icon" style="background:#FFF0F3;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="8" width="14" height="7" rx="1.5" stroke="#C4768A" stroke-width="1.1"/><path d="M2 10l3-5h8l3 5" stroke="#C4768A" stroke-width="1.1" fill="none"/></svg>
+            </div>
+            <span class="j-label">2 buses</span>
+            <span class="j-tag jtag-pain">2h+ trip</span>
+          </div>
+          <div class="j-arrow"><svg width="20" height="10" viewBox="0 0 20 10"><path d="M0 5h16M12 1l4 4-4 4" stroke="#C4768A" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="j-step">
+            <div class="j-icon" style="background:#FFF0F3;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#C4768A" stroke-width="1.1"/><path d="M6 9h6M9 6v6" stroke="#C4768A" stroke-width="1.1" stroke-linecap="round"/></svg>
+            </div>
+            <span class="j-label">Tries to book</span>
+            <span class="j-tag jtag-pain">Line busy</span>
+          </div>
+          <div class="j-arrow"><svg width="20" height="10" viewBox="0 0 20 10"><path d="M0 5h16M12 1l4 4-4 4" stroke="#8A7F78" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 2"/></svg></div>
+          <div class="j-step">
+            <div class="j-icon" style="background:#FFF0F3;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="6" r="2.5" stroke="#C4768A" stroke-width="1.1"/><path d="M3 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#C4768A" stroke-width="1.1" stroke-linecap="round"/><path d="M12 12l3 3M15 12l-3 3" stroke="#C4768A" stroke-width="1.1" stroke-linecap="round"/></svg>
+            </div>
+            <span class="j-label">Returns without a slot</span>
+            <span class="j-tag jtag-pain">No diagnosis</span>
+          </div>
+        </div>
+
+        <div class="tension-box reveal reveal-delay-4">
+          <div class="t-deco"></div>
+          <div class="q-mark" style="font-size:40px;">"</div>
+          <p class="t-quote">These patients won't use technology. They are elderly, poor — many don't even have a phone."</p>
+          <p class="t-attr">A belief shared by management and healthcare teams at the hospital</p>
+          <div class="t-turn">
+            <span class="t-turn-main">What if they were wrong?</span>
+            <span class="t-turn-sub">It was time to go to the field and find out.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · CONTEXTO -->
+<section id="contexto">
+  <div class="container">
+    <div class="sec-eyebrow reveal">
+      <span class="sec-num">02/</span>
+      <span class="sec-rule"></span>
+      <span class="sec-label">The Context</span>
+    </div>
+    <h2 class="sec-title reveal">A beacon of hope — and a system<br><em>on the verge of collapse</em></h2>
+    <p class="sec-body reveal" style="max-width:580px;">Founded in 1945, it is a philanthropic institution offering 100% free public healthcare. A reference in oncology across Northern and Northeastern Brazil — serving those most in need, always with scarce resources.</p>
+
+    <div class="ctx-grid">
+      <div>
+        <div class="stat-grid reveal reveal-delay-1">
+          <div class="stat-card"><div class="stat-n">55%</div><div class="stat-lbl">of oncology patients from Pernambuco treated here</div></div>
+          <div class="stat-card"><div class="stat-n">1M+</div><div class="stat-lbl">procedures performed per year</div></div>
+          <div class="stat-card"><div class="stat-n">100%</div><div class="stat-lbl">free public healthcare, no private insurance</div></div>
+          <div class="stat-card"><div class="stat-n">1945</div><div class="stat-lbl">founded over 75 years ago</div></div>
+        </div>
+        <div style="margin-top:20px;padding:16px 20px;background:var(--rose-light);border-left:2px solid var(--rose);border-radius:0 8px 8px 0;font-size:12px;color:var(--text-mid);line-height:1.7;" class="reveal reveal-delay-2">
+          "A reference institution serving those most in need — fighting every day to keep its doors open."
+        </div>
+      </div>
+
+      <div>
+        <div style="margin-bottom:32px;" class="reveal">
+          <div style="font-family:var(--serif);font-size:clamp(20px,2.5vw,32px);font-weight:700;color:var(--text-dark);margin-bottom:12px;">The central question</div>
+          <div style="padding:28px 32px;background:var(--white);border-radius:16px;border:0.5px solid var(--border);">
+            <div class="q-mark" style="font-size:44px;">"</div>
+            <p style="font-family:var(--serif);font-size:clamp(14px,1.8vw,20px);font-style:italic;color:var(--text-dark);line-height:1.5;">Could a digital appointment system be implemented for <span style="color:var(--rose);">low-income patients</span> at a public oncology hospital?"</p>
+            <p style="font-size:11px;color:var(--text-light);margin-top:12px;">Management said no. Healthcare teams said no.<br>I needed data to answer with confidence.</p>
+          </div>
+        </div>
+
+        <div class="hyp-grid reveal reveal-delay-2">
+          <div class="hyp-card"><span class="hyp-num">H1</span><p class="hyp-text"><strong>Elderly and low-income patients</strong> do not own smartphones or have internet access.</p><span class="badge badge-r"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M2 2l4 4M6 2L2 6" stroke="#9E6B7A" stroke-width="1.2" stroke-linecap="round"/></svg>Refuted</span></div>
+          <div class="hyp-card"><span class="hyp-num">H2</span><p class="hyp-text">Patients would lack the <strong>digital literacy</strong> to use a booking platform.</p><span class="badge badge-r"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M2 2l4 4M6 2L2 6" stroke="#9E6B7A" stroke-width="1.2" stroke-linecap="round"/></svg>Refuted</span></div>
+          <div class="hyp-card"><span class="hyp-num">H3</span><p class="hyp-text"><strong>Caregivers act as digital intermediaries</strong>, enabling access for patients.</p><span class="badge badge-g"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="#3A7A5A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Confirmed</span></div>
+          <div class="hyp-card"><span class="hyp-num">H4</span><p class="hyp-text">A digital system would reduce <strong>triage congestion</strong> and improve the experience.</p><span class="badge badge-g"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1.5 4l2 2 3-3" stroke="#3A7A5A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Confirmed</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · PESQUISA -->
+<section id="pesquisa">
+  <div class="container">
+    <div class="sec-eyebrow reveal">
+      <span class="sec-num">03/</span>
+      <span class="sec-rule"></span>
+      <span class="sec-label">The Research</span>
+    </div>
+    <h2 class="sec-title reveal">What the field <em>revealed</em></h2>
+
+    <div class="pesq-intro">
+      <div class="reveal">
+        <p class="sec-body">I walked the hospital corridors with curiosity — and without prior assumptions. I spoke with <strong>patients and caregivers</strong> in two formats: a digital questionnaire and in-person interviews during waiting time.</p>
+        <div class="big-num-row">
+          <div><div class="big-n">~80</div><div class="big-lbl">people interviewed</div></div>
+          <div><div class="big-n">2</div><div class="big-lbl">profiles: patients<br>and caregivers</div></div>
+        </div>
+        <div class="note-bar">
+          <strong>Nota metodológica:</strong> a amostra representa uma fração do volume diário (~1.000 atendimentos/dia). Os insights mostraram consistência suficiente para orientar uma hipótese — e foram <strong>validados pelo resultado da implantação: +69% mammograms performed.</strong>
+        </div>
+      </div>
+      <div class="pesq-img reveal reveal-delay-1">
+        <img src="slide8.png" alt="Insight: senhora assistindo crochê no YouTube no corredor do hospital" onerror="this.parentElement.innerHTML='<div class=\'ph-block\'><p class=\'ph-lbl\'>slide8.png</p><span class=\'ph-tag\'>ilustração: senhora com crochê + celular</span></div>'">
+      </div>
+    </div>
+
+    <!-- O insight do crochê -->
+    <div style="margin-top:60px;padding:48px;background:var(--cream-mid);border-radius:20px;border:0.5px solid var(--border);position:relative;overflow:hidden;" class="reveal">
+      <div style="position:absolute;width:200px;height:200px;border-radius:50%;background:var(--rose);opacity:0.05;bottom:-50px;right:-30px;"></div>
+      <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:16px;">The insight that changed everything</div>
+      <div class="q-mark">"</div>
+      <p style="font-family:var(--serif);font-size:clamp(18px,2.2vw,28px);font-style:italic;color:var(--text-dark);line-height:1.45;max-width:640px;">An elderly woman, in the hospital corridor, watching a crochet tutorial on YouTube — and practicing at the same time. While waiting to be seen.</p>
+      <div style="width:40px;height:1px;background:var(--rose);opacity:0.4;margin:24px 0;"></div>
+      <p style="font-size:13px;color:var(--text-mid);line-height:1.75;max-width:520px;">If she can navigate YouTube, she can use any system the hospital proposes — <strong style="color:var(--text-dark);">as long as it is well designed.</strong> The problem was never the technology. It was the assumption about who uses it.</p>
+    </div>
+
+    <!-- Dados -->
+    <div class="data-section">
+      <h3 class="data-title reveal">Smartphones &amp; connectivity</h3>
+      <p class="data-sub reveal">What the research revealed about technology access among respondents</p>
+      <div class="data-cards">
+        <div class="data-card hl reveal"><span class="dc-tag tag-p">Paciente</span><div class="dc-pct">60%</div><div class="dc-bar"><div class="dc-fill" style="width:60%;"></div></div><p class="dc-lbl">own smartphones</p><p class="dc-sub">The other 40% have basic phones for calls</p></div>
+        <div class="data-card hl reveal reveal-delay-1"><span class="dc-tag tag-a">Acompanhante</span><div class="dc-pct">88,9%</div><div class="dc-bar"><div class="dc-fill" style="width:89%;"></div></div><p class="dc-lbl">own smartphones</p><p class="dc-sub">And support patients through hospital processes</p></div>
+        <div class="data-card reveal reveal-delay-2"><span class="dc-tag tag-a">Ambos</span><div class="dc-pct" style="font-size:clamp(22px,3vw,36px);">Maioria</div><div class="dc-bar"><div class="dc-fill" style="width:75%;"></div></div><p class="dc-lbl">have mobile internet</p><p class="dc-sub">80% of caregivers have a home internet plan</p></div>
+        <div class="data-card hl reveal reveal-delay-3"><span class="dc-tag tag-p">Ambos</span><div class="dc-pct">100%</div><div class="dc-bar"><div class="dc-fill" style="width:100%;"></div></div><p class="dc-lbl">use WhatsApp</p><p class="dc-sub">64% also use Facebook and Instagram</p></div>
+      </div>
+      <div class="insight-bar reveal"><strong>Key insight:</strong> if everyone can send messages via WhatsApp, everyone has the baseline skill to use any digital tool the hospital might propose — as long as it is well designed.</div>
+    </div>
+
+    <!-- Mapa de insights -->
+    <div class="map-section">
+      <h3 class="data-title reveal">What patients needed — and what was holding them back</h3>
+      <div class="three-cols reveal reveal-delay-1">
+        <div>
+          <p class="col-head" style="color:#3A7A5A;border-color:#3A7A5A;">Needs</p>
+          <div class="col-item" style="background:var(--green-light);color:#2D5A42;">Being seen promptly</div>
+          <div class="col-item" style="background:var(--green-light);color:#2D5A42;">Effective communication about appointments</div>
+          <div class="col-item" style="background:var(--green-light);color:#2D5A42;">Arriving at the right time and being seen</div>
+          <div class="col-item" style="background:var(--green-light);color:#2D5A42;">Less waiting time at the hospital</div>
+        </div>
+        <div>
+          <p class="col-head" style="color:var(--rose-dark);border-color:var(--rose);">Pain points</p>
+          <div class="col-item" style="background:var(--rose-light);color:#7A4A5A;">Arriving and not being seen</div>
+          <div class="col-item" style="background:var(--rose-light);color:#7A4A5A;">Not being notified of schedule changes</div>
+          <div class="col-item" style="background:var(--rose-light);color:#7A4A5A;">Long commutes with no guarantee</div>
+          <div class="col-item" style="background:var(--rose-light);color:#7A4A5A;">Distrust of digital services</div>
+        </div>
+        <div>
+          <p class="col-head" style="color:#3A4A6A;border-color:#5A6A8A;">Opportunities</p>
+          <div class="col-item" style="background:#EEF0F7;color:#3A4A6A;">Web-based appointment system</div>
+          <div class="col-item" style="background:#EEF0F7;color:#3A4A6A;">WhatsApp for confirmations and alerts</div>
+          <div class="col-item" style="background:#EEF0F7;color:#3A4A6A;">Change alerts with 5h+ advance notice</div>
+          <div class="col-item" style="background:#EEF0F7;color:#3A4A6A;">Integrated exam booking in one platform</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personas -->
+    <div class="persona-section">
+      <h3 class="data-title reveal">Who I met in the corridors</h3>
+      <div class="persona-cards">
+        <div class="persona-card reveal">
+          <div class="p-head" style="background:#FFF8F9;">
+            <div class="p-avatar"><img src="slide12-1.png" alt="Maria Aparecida" onerror="this.style.display='none';"></div>
+            <div><p class="p-name">Maria Aparecida</p><p class="p-role">63 years old · patient</p></div>
+          </div>
+          <div class="p-body">
+            <div class="p-item"><span class="p-dot" style="background:var(--rose);"></span>Comes from the countryside, takes a bus at 4am</div>
+            <div class="p-item"><span class="p-dot" style="background:var(--rose);"></span>Has a smartphone, uses WhatsApp with family</div>
+            <div class="p-item"><span class="p-dot" style="background:var(--rose);"></span>Afraid of arriving and not being seen</div>
+            <p class="p-quote">"If I could book online, I wouldn't have to leave so early."</p>
+          </div>
+        </div>
+        <div class="persona-card reveal reveal-delay-1">
+          <div class="p-head" style="background:#F2F4F8;">
+            <div class="p-avatar"><img src="slide12-2.png" alt="José Ferreira" onerror="this.style.display='none';"></div>
+            <div><p class="p-name">José Ferreira</p><p class="p-role">41 years old · caregiver</p></div>
+          </div>
+          <div class="p-body">
+            <div class="p-item"><span class="p-dot" style="background:#5A6A8A;"></span>Takes care of his mother with breast cancer</div>
+            <div class="p-item"><span class="p-dot" style="background:#5A6A8A;"></span>Has a smartphone and internet. Uses social media</div>
+            <div class="p-item"><span class="p-dot" style="background:#5A6A8A;"></span>Books appointments for his mother</div>
+            <p class="p-quote">"I handle everything on the phone for her."</p>
+          </div>
+        </div>
+        <div class="persona-card reveal reveal-delay-2">
+          <div class="p-head" style="background:var(--cream-mid);">
+            <div class="p-avatar"><img src="slide12-3.png" alt="Rodrigo Alves" onerror="this.style.display='none';"></div>
+            <div><p class="p-name">Rodrigo Alves</p><p class="p-role">35 years old · triage receptionist</p></div>
+          </div>
+          <div class="p-body">
+            <div class="p-item"><span class="p-dot" style="background:#8A7F78;"></span>Overwhelmed by queues and daily calls</div>
+            <div class="p-item"><span class="p-dot" style="background:#8A7F78;"></span>Deals with patient dissatisfaction</div>
+            <div class="p-item"><span class="p-dot" style="background:#8A7F78;"></span>Believes digital would greatly relieve the sector</div>
+            <p class="p-quote">"Online booking would organize everything."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · SOLUÇÃO -->
+<section id="solucao">
+  <div class="container">
+    <div class="sec-eyebrow reveal">
+      <span class="sec-num">04/</span>
+      <span class="sec-rule"></span>
+      <span class="sec-label">The Solution</span>
+    </div>
+    <h2 class="sec-title reveal">Pink October as a <em>testing ground</em></h2>
+    <p class="sec-body reveal" style="max-width:580px;">The research opened a window of opportunity. In partnership with a healthcare technology company, we developed the hospital's <strong>first digital mammogram booking channel</strong> — launched during Pink October 2021.</p>
+
+    <div class="sol-grid">
+      <div>
+        <div class="sol-img reveal">
+          <img src="slide15.png" alt="Outubro Rosa" onerror="this.parentElement.innerHTML='<div class=\'ph-block\'><p class=\'ph-lbl\'>slide15.png</p><span class=\'ph-tag\'>ilustração: campanha Outubro Rosa</span></div>'">
+        </div>
+
+        <div class="opp-list reveal reveal-delay-1">
+          <div class="opp-item"><span class="opp-n">1</span><p class="opp-t"><strong>Web-based appointment system</strong> — acessível pelo celular, sem comparecer presencialmente ou ligar.</p></div>
+          <div class="opp-item"><span class="opp-n">2</span><p class="opp-t"><strong>WhatsApp as communication channel</strong> — confirmations, reminders and alerts where everyone already is.</p></div>
+          <div class="opp-item"><span class="opp-n">3</span><p class="opp-t"><strong>Schedule change alerts</strong> with at least 5 hours advance notice.</p></div>
+          <div class="opp-item"><span class="opp-n">4</span><p class="opp-t"><strong>Direct access to radiology</strong> — no triage, no queue, no uncertainty.</p></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="timeline reveal" style="margin-bottom:40px;">
+          <div class="tl-item"><div class="tl-spine"><div class="tl-dot"></div><div class="tl-line" style="height:32px;"></div></div><div><p class="tl-label">Discovery &amp; research</p><p class="tl-desc">~80 interviews with patients and caregivers in the hospital corridors</p></div></div>
+          <div class="tl-item"><div class="tl-spine"><div class="tl-dot"></div><div class="tl-line" style="height:32px;"></div></div><div><p class="tl-label">Partnership with a healthcare technology company</p><p class="tl-desc">Development of the online mammogram booking website</p></div></div>
+          <div class="tl-item"><div class="tl-spine"><div class="tl-dot"></div><div class="tl-line" style="height:32px;"></div></div><div><p class="tl-label">Launch — Pink October 2021</p><p class="tl-desc">First ever digital booking channel in the hospital's history</p></div></div>
+          <div class="tl-item"><div class="tl-spine"><div class="tl-dot g"></div></div><div><p class="tl-label" style="color:var(--green);">Outcome: +69% de mamografias</p><p class="tl-desc">2,576 in 2020 → 4,351 in 2021</p></div></div>
+        </div>
+
+        <!-- Antes/depois -->
+        <div class="ba-section reveal reveal-delay-2">
+          <h3 style="font-family:var(--serif);font-size:clamp(18px,2.2vw,26px);font-weight:700;color:var(--text-dark);margin-bottom:20px;">Before and after implementation</h3>
+          <div class="ba-grid">
+            <div class="ba-col ba-before">
+              <p class="ba-head ba-head-b">Antes</p>
+              <div class="ba-item"><span style="width:5px;height:5px;border-radius:50%;background:var(--rose);flex-shrink:0;margin-top:4px;display:block;"></span><span style="font-size:10px;color:var(--text-mid);">Packed triage area</span></div>
+              <div class="ba-item"><span style="width:5px;height:5px;border-radius:50%;background:var(--rose);flex-shrink:0;margin-top:4px;display:block;"></span><span style="font-size:10px;color:var(--text-mid);">Congested phone lines</span></div>
+              <div class="ba-item"><span style="width:5px;height:5px;border-radius:50%;background:var(--rose);flex-shrink:0;margin-top:4px;display:block;"></span><span style="font-size:10px;color:var(--text-mid);">Afternoon radiology slots underused</span></div>
+              <div class="ba-item"><span style="width:5px;height:5px;border-radius:50%;background:var(--rose);flex-shrink:0;margin-top:4px;display:block;"></span><span style="font-size:10px;color:var(--text-mid);">High patient dissatisfaction</span></div>
+              <div class="ba-item"><span style="width:5px;height:5px;border-radius:50%;background:var(--rose);flex-shrink:0;margin-top:4px;display:block;"></span><span style="font-size:10px;color:var(--text-mid);">Low volume of diagnoses</span></div>
+            </div>
+            <div class="ba-col ba-after">
+              <p class="ba-head ba-head-a">Depois</p>
+              <div class="ba-item"><span style="width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:4px;display:block;"></span><span style="font-size:10px;color:#2A4A38;">Fast booking without queues</span></div>
+              <div class="ba-item"><span style="width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:4px;display:block;"></span><span style="font-size:10px;color:#2A4A38;">Phone freed up for other services</span></div>
+              <div class="ba-item"><span style="width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:4px;display:block;"></span><span style="font-size:10px;color:#2A4A38;">Afternoon radiology fully booked</span></div>
+              <div class="ba-item"><span style="width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:4px;display:block;"></span><span style="font-size:10px;color:#2A4A38;">-90% complaints in the sector</span></div>
+              <div class="ba-item"><span style="width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:4px;display:block;"></span><span style="font-size:10px;color:#2A4A38;">+69% mammograms performed</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 04.5 · O SISTEMA -->
+<section id="o-sistema" style="background:var(--white);padding:80px 0;">
+  <div class="container">
+    <div class="sec-eyebrow reveal">
+      <span class="sec-num">04/</span>
+      <span class="sec-rule"></span>
+      <span class="sec-label">The System</span>
+    </div>
+    <h2 class="sec-title reveal">The platform that connected<br><em>patient and diagnosis</em></h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px;align-items:start;">
+      <div class="reveal">
+        <p class="sec-body" style="margin-bottom:28px;">For Pink October 2021, we developed alongside a healthcare technology partner the institution's first digital mammogram booking channel. Anyone could schedule their appointment by phone — without leaving home, without calling, without standing in line.</p>
+        <p class="sec-body" style="margin-bottom:32px;">A confirmation arrived by email and the voucher was shown at the entrance — allowing the patient to go directly to the radiology department, completely bypassing the triage that had previously been the main bottleneck.</p>
+
+        <!-- Link do site real -->
+        <a href="https://outubrorosahcp.tisaude.com/" target="_blank" rel="noopener"
+          style="display:inline-flex;align-items:center;gap:10px;padding:14px 22px;background:var(--text-dark);color:var(--white);border-radius:10px;text-decoration:none;font-size:13px;font-weight:500;transition:background 0.2s;"
+          onmouseover="this.style.background='var(--rose)'" onmouseout="this.style.background='var(--text-dark)'">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M8 2c0 0-2 2-2 6s2 6 2 6M8 2c0 0 2 2 2 6s-2 6-2 6M2 8h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Access the booking website
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H6M11 3v5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Funcionalidades -->
+      <div class="reveal reveal-delay-1">
+        <p style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-light);font-weight:500;margin-bottom:20px;">Platform features</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:var(--cream);border-radius:10px;border:0.5px solid var(--border);">
+            <div style="width:36px;height:36px;border-radius:8px;background:var(--rose-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="#C4768A" stroke-width="1.1"/><path d="M5 3V1.5M11 3V1.5M1 7h14" stroke="#C4768A" stroke-width="1" stroke-linecap="round"/></svg>
+            </div>
+            <div><p style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:3px;">Online mammogram booking</p><p style="font-size:12px;color:var(--text-light);">Date and time selection with real-time availability, no account creation required.</p></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:var(--cream);border-radius:10px;border:0.5px solid var(--border);">
+            <div style="width:36px;height:36px;border-radius:8px;background:var(--rose-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4l6 4 6-4" stroke="#C4768A" stroke-width="1.1" stroke-linecap="round"/><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="#C4768A" stroke-width="1.1"/></svg>
+            </div>
+            <div><p style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:3px;">Email confirmation</p><p style="font-size:12px;color:var(--text-light);">Instant voucher with date, time and sector access instructions.</p></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:var(--cream);border-radius:10px;border:0.5px solid var(--border);">
+            <div style="width:36px;height:36px;border-radius:8px;background:var(--rose-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="#C4768A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div><p style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:3px;">Direct access to radiology</p><p style="font-size:12px;color:var(--text-light);">With the voucher, patients go directly to the department — bypassing triage entirely.</p></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:var(--cream);border-radius:10px;border:0.5px solid var(--border);">
+            <div style="width:36px;height:36px;border-radius:8px;background:var(--rose-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v3M8 11v3M2 8h3M11 8h3" stroke="#C4768A" stroke-width="1.1" stroke-linecap="round"/><circle cx="8" cy="8" r="2.5" stroke="#C4768A" stroke-width="1.1"/></svg>
+            </div>
+            <div><p style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:3px;">Appointment rescheduling</p><p style="font-size:12px;color:var(--text-light);">Option to reschedule in case of no-show, without bureaucracy.</p></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:var(--green-light);border-radius:10px;border:0.5px solid #B8DCC8;">
+            <div style="width:36px;height:36px;border-radius:8px;background:rgba(58,122,90,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v14M1 8h14" stroke="#3A7A5A" stroke-width="1.1" stroke-linecap="round"/></svg>
+            </div>
+            <div><p style="font-size:13px;font-weight:500;color:#2A6A42;margin-bottom:3px;">Afternoon slots made available</p><p style="font-size:12px;color:#3A7A5A;">The system began filling previously idle afternoon shifts in radiology, increasing daily exam capacity.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · IMPACTO -->
+<section id="impacto">
+  <div class="container">
+    <div class="sec-eyebrow reveal">
+      <span class="sec-num">05/</span>
+      <span class="sec-rule"></span>
+      <span class="sec-label">The Impact</span>
+    </div>
+    <h2 class="sec-title reveal">The numbers that research<br><em>made possible</em></h2>
+
+    <div class="big-impact reveal">
+      <div class="impact-n-block">
+        <span class="impact-n" style="color:var(--text-faint);">2.576</span>
+        <span class="impact-lbl">mammograms performed in 2020</span>
+        <span class="impact-sub">in-person + phone</span>
+      </div>
+      <div class="impact-arrow">
+        <span class="impact-pct">+69%</span>
+        <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8h34M28 2l6 6-6 6" stroke="#3A7A5A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="impact-n-block">
+        <span class="impact-n" style="color:var(--rose);">4.351</span>
+        <span class="impact-lbl">mammograms performed in 2021</span>
+        <span class="impact-sub">in-person + phone + online</span>
+      </div>
+      <div class="impact-divider"></div>
+      <div class="impact-n-block">
+        <span class="impact-n" style="color:var(--green);font-size:clamp(36px,5vw,64px);">-90%</span>
+        <span class="impact-lbl">reduction in sector complaints</span>
+        <span class="impact-sub">reported by the head radiologist</span>
+      </div>
+    </div>
+
+    <div class="extras-row reveal reveal-delay-1">
+      <div class="extra-card"><span class="ex-n">+1</span><p class="ex-t"><strong>New digital channel</strong> — first ever online booking system at the institution</p></div>
+      <div class="extra-card"><span class="ex-n">100%</span><p class="ex-t">of afternoon radiology slots now fully utilized</p></div>
+      <div class="extra-card"><span class="ex-n">0</span><p class="ex-t">staff previously dedicated to phone calls — freed up for other services</p></div>
+    </div>
+
+    <!-- Depoimentos -->
+    <div class="dep-section">
+      <h3 class="data-title reveal">Voices from the field</h3>
+      <div class="dep-grid">
+        <div class="dep-card reveal">
+          <div class="dep-head">
+            <div class="dep-av"><img src="dep-josinete.png" alt="Josinete Silva" onerror="this.style.display='none';"></div>
+            <div><p class="dep-name">Josinete Silva</p><p class="dep-role">Paciente</p></div>
+          </div>
+          <div class="dep-qm">"</div>
+          <p class="dep-text">A family friend visited the website and booked for me and several other family members. I arrived, showed the booking confirmation and did the exam — it was very quick.</p>
+        </div>
+        <div class="dep-card reveal reveal-delay-1">
+          <div class="dep-head">
+            <div class="dep-av"><img src="dep-marleide.png" alt="Marleide Afrânio" onerror="this.style.display='none';"></div>
+            <div><p class="dep-name">Marleide Afrânio</p><p class="dep-role">Paciente</p></div>
+          </div>
+          <div class="dep-qm">"</div>
+          <p class="dep-text">I thought it was great, because it means we don't have to leave home to stand in a queue. You just book online and wait for the confirmation to arrive in your email.</p>
+        </div>
+        <div class="dep-card reveal reveal-delay-2">
+          <div class="dep-head">
+            <div class="dep-av"><img src="dep-vieira.png" alt="Dr. Vieira" onerror="this.style.display='none';"></div>
+            <div><p class="dep-name">Dr. Vieira</p><p class="dep-role">Radiologist and department head</p></div>
+          </div>
+          <div class="dep-qm">"</div>
+          <p class="dep-text">The increase in demand for the service was noticeable. The process became more organized and faster. We saw a 90% reduction in the number of complaints.</p>
+        </div>
+        <div class="dep-card reveal reveal-delay-3">
+          <div class="dep-head">
+            <div class="dep-av"><img src="dep-natalia.png" alt="Natália Pereira" onerror="this.style.display='none';"></div>
+            <div><p class="dep-name">Natália Pereira</p><p class="dep-role">Administrative supervisor</p></div>
+          </div>
+          <div class="dep-qm">"</div>
+          <p class="dep-text">The system eliminates the need for a dedicated staff member on the phone line and removes congestion — which was disrupting the entire flow of the hospital.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENCERRAMENTO -->
+<section id="encerramento">
+  <div class="enc-inner">
+    <div class="reveal">
+      <h2 class="enc-title">The greatest barrier was not <em>technological</em>.<br>It was a matter of belief.</h2>
+      <p class="enc-body">When you look at the user with <strong>curiosity instead of assumption</strong>, data surprises you — and can change lives.<br><br>Public design is real design. With real constraints, real users and impact that can't fit in a mockup.</p>
+      <div class="enc-author">
+        <p class="enc-aname">Thalles Ximenes</p>
+        <p class="enc-arole">UX Research · Hospital Oncológico Público · Northeast, Brazil · 2020–2021</p>
+      </div>
+    </div>
+    <div class="enc-learns reveal reveal-delay-2">
+      <p style="font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:12px;">What this case study teaches</p>
+      <div class="enc-learn"><span class="enc-ln">1</span><p class="enc-lt"><strong>Hypotheses are meant to be tested, not confirmed.</strong> Going to the field without bias is what separates discovery from validation.</p></div>
+      <div class="enc-learn"><span class="enc-ln">2</span><p class="enc-lt"><strong>User context is the product.</strong> Understanding how Maria gets to the hospital matters as much as the interface design.</p></div>
+      <div class="enc-learn"><span class="enc-ln">3</span><p class="enc-lt"><strong>Data changes institutional narratives.</strong> The research gave the team the language to confront what management believed.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="foot-left">© Thalles Ximenes · UX Research Portfolio</span>
+  <span class="foot-right">Hospital Oncológico Público · Northeast, Brazil · 2020–2021</span>
+</footer>
+
+<script>
+// NAV ACTIVE STATE
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+      if(active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-60px 0px -40% 0px' });
+
+sections.forEach(s => observer.observe(s));
+
+// SCROLL REVEAL
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// NAV SCROLL BEHAVIOR
+let lastY = 0;
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if(y > 80 && y > lastY) {
+    nav.style.transform = 'translateY(-100%)';
+    nav.style.transition = 'transform 0.3s ease';
+  } else {
+    nav.style.transform = 'translateY(0)';
+  }
+  lastY = y;
+});
+</script>
+</body>
+</html>
