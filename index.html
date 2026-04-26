@@ -429,7 +429,7 @@ section{
 }
 .p-head{padding:20px 20px 0;display:flex;gap:14px;align-items:center;}
 .p-avatar{
-  width:52px;height:52px;border-radius:50%;flex-shrink:0;
+  width:72px;height:72px;border-radius:50%;flex-shrink:0;
   overflow:hidden;background:var(--cream-dark);
   border:1px dashed var(--beige);
   display:flex;align-items:center;justify-content:center;
@@ -561,7 +561,7 @@ section{
 }
 .dep-head{display:flex;gap:12px;align-items:center;}
 .dep-av{
-  width:40px;height:40px;border-radius:50%;flex-shrink:0;
+  width:56px;height:56px;border-radius:50%;flex-shrink:0;
   overflow:hidden;background:var(--cream-dark);
   border:1px dashed var(--beige);
   display:flex;align-items:center;justify-content:center;
@@ -657,6 +657,7 @@ footer{
     <a class="nav-link" href="#contexto"><span class="nav-num">02/</span>O Contexto</a>
     <a class="nav-link" href="#pesquisa"><span class="nav-num">03/</span>A Pesquisa</a>
     <a class="nav-link" href="#solucao"><span class="nav-num">04/</span>A Solução</a>
+    <a class="nav-link" href="#o-sistema"><span class="nav-num">04/</span>O Sistema</a>
     <a class="nav-link" href="#impacto"><span class="nav-num">05/</span>O Impacto</a>
   </div>
 </nav>
@@ -1002,6 +1003,78 @@ footer{
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04.5 · O SISTEMA -->
+<section id="o-sistema" style="background:var(--white);padding:80px 0;">
+  <div class="container">
+    <div class="sec-eyebrow reveal">
+      <span class="sec-num">04/</span>
+      <span class="sec-rule"></span>
+      <span class="sec-label">O Sistema</span>
+    </div>
+    <h2 class="sec-title reveal">O site que tornou o agendamento<br><em>possível de qualquer lugar</em></h2>
+    <p class="sec-body reveal" style="max-width:580px;margin-bottom:48px;">A plataforma permitia agendar uma mamografia pelo celular — sem sair de casa, sem ligar, sem enfrentar fila. O comprovante chegava por e-mail e bastava apresentá-lo ao chegar. Pacientes iam direto à radiologia.</p>
+
+    <!-- Mockup do site -->
+    <div class="reveal" style="position:relative;margin-bottom:48px;">
+      <!-- Browser chrome -->
+      <div style="background:#E8E3DF;border-radius:16px 16px 0 0;padding:12px 20px;display:flex;align-items:center;gap:10px;border:0.5px solid var(--border);border-bottom:none;">
+        <div style="display:flex;gap:6px;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#F4756B;"></div>
+          <div style="width:10px;height:10px;border-radius:50%;background:#F9BB38;"></div>
+          <div style="width:10px;height:10px;border-radius:50%;background:#56C353;"></div>
+        </div>
+        <div style="flex:1;background:var(--white);border-radius:6px;padding:4px 14px;font-size:10px;color:var(--text-light);font-family:var(--sans);">
+          outubrorosahcp.tisaude.com
+        </div>
+      </div>
+      <!-- Screenshot area -->
+      <div style="width:100%;aspect-ratio:16/9;background:var(--cream-mid);border:0.5px solid var(--border);border-top:none;border-radius:0 0 16px 16px;overflow:hidden;position:relative;">
+        <img src="site-screenshot.png" alt="Site de agendamento de mamografias" style="width:100%;height:100%;object-fit:cover;object-position:top;"
+          onerror="this.style.display='none';document.getElementById('site-ph').style.display='flex';">
+        <div id="site-ph" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;flex-direction:column;gap:12px;background:var(--cream-mid);">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="2" y="6" width="36" height="28" rx="3" stroke="#C8C0B8" stroke-width="1.5"/><path d="M10 20h20M10 25h14" stroke="#C8C0B8" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="14" r="3" stroke="#C8C0B8" stroke-width="1.5"/></svg>
+          <p style="font-size:12px;color:var(--text-light);text-align:center;line-height:1.6;">Adicione um print do site<br><strong style="color:var(--rose);">site-screenshot.png</strong></p>
+          <span style="font-size:10px;color:var(--rose);background:var(--rose-light);padding:3px 10px;border-radius:10px;">salve como site-screenshot.png e faça upload no GitHub</span>
+        </div>
+      </div>
+      <!-- Shadow -->
+      <div style="position:absolute;bottom:-16px;left:5%;right:5%;height:32px;background:rgba(0,0,0,0.08);filter:blur(16px);border-radius:50%;z-index:-1;"></div>
+    </div>
+
+    <!-- Fluxo simplificado -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:12px;overflow:hidden;" class="reveal reveal-delay-1">
+      <div style="background:var(--white);padding:24px 20px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--rose-light);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#C4768A" stroke-width="1.2"/><path d="M5 9h8M5 12h5" stroke="#C4768A" stroke-width="1" stroke-linecap="round"/></svg>
+        </div>
+        <p style="font-size:12px;font-weight:500;color:var(--text-dark);margin-bottom:4px;">Acessa o site</p>
+        <p style="font-size:10px;color:var(--text-light);">Pelo celular, sem criar conta</p>
+      </div>
+      <div style="background:var(--white);padding:24px 20px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--rose-light);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="1.5" stroke="#C4768A" stroke-width="1.2"/><path d="M6 3V1M12 3V1M2 7h14" stroke="#C4768A" stroke-width="1" stroke-linecap="round"/></svg>
+        </div>
+        <p style="font-size:12px;font-weight:500;color:var(--text-dark);margin-bottom:4px;">Escolhe data e horário</p>
+        <p style="font-size:10px;color:var(--text-light);">Vagas disponíveis em tempo real</p>
+      </div>
+      <div style="background:var(--white);padding:24px 20px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--rose-light);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9l4 4 8-8" stroke="#C4768A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p style="font-size:12px;font-weight:500;color:var(--text-dark);margin-bottom:4px;">Recebe confirmação</p>
+        <p style="font-size:10px;color:var(--text-light);">Comprovante por e-mail na hora</p>
+      </div>
+      <div style="background:var(--green-light);padding:24px 20px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(58,122,90,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2v2M9 14v2M2 9h2M14 9h2" stroke="#3A7A5A" stroke-width="1.2" stroke-linecap="round"/><circle cx="9" cy="9" r="3.5" stroke="#3A7A5A" stroke-width="1.2"/></svg>
+        </div>
+        <p style="font-size:12px;font-weight:500;color:#2A6A42;margin-bottom:4px;">Vai direto à radiologia</p>
+        <p style="font-size:10px;color:#3A7A5A;">Sem triagem, sem fila, sem incerteza</p>
       </div>
     </div>
   </div>
